@@ -1,0 +1,164 @@
+h1.heading{padding:0px;margin: 0px 0px 10px 0px;text-align:center;font: 18px Georgia, "Times New Roman", Times, serif;}
+body, html {
+  height: 100%;
+  width: 100%;
+}
+
+
+/* width and height of google map */
+#google_map {width: 100%; height: 100%; margin-top:none;margin-left:auto;margin-right:auto;}
+
+/* Marker Edit form */
+.marker-edit label{display:block;margin-bottom: 5px;}
+.marker-edit label span {width: 100px;float: left;}
+.marker-edit label input, .marker-edit label select{height: 30px;}
+.marker-edit label textarea{height: 60px;}
+.marker-edit label input, .marker-edit label select, .marker-edit label textarea {width: 60%;margin:0px;padding-left: 5px;border: 1px solid #DDD;border-radius: 3px;}
+
+/* Marker Info Window */
+h1.marker-heading{color: #585858;margin: 0px;padding: 0px;font: 18px "Trebuchet MS", Arial;border-bottom: 1px dotted #D8D8D8;}
+h2.marker-heading{color: #585858;margin: 0px;padding: 0px;font: 15px "Trebuchet MS", Arial;border-bottom: 1px;}
+div.marker-info-win {max-width: 700px;margin-right: px;}
+div.marker-info-win p{padding: 0px;margin: 10px 0px 10px 0;}
+div.marker-inner-win{padding: 5px;}
+button.save-marker, button.remove-marker{border: none;background: rgba(0, 0, 0, 0);color: #00F;padding: 0px;text-decoration: underline;margin-right: 10px;cursor: pointer;
+}
+@gray: #333;
+@gray-light: #aaa;
+@gray-lighter: #eee;
+@space: 40px;
+@blue: #428bca;
+@blue-dark: darken(@blue, 5%);
+
+// Mixin for transition/transform
+.translate(@x; @y) {
+  -webkit-transform: translate(@x, @y);
+      -ms-transform: translate(@x, @y); // IE9+
+          transform: translate(@x, @y);
+}
+.transition(@transition) {
+  -webkit-transition: @transition;
+          transition: @transition;
+}
+.transition-transform(@transition) {
+  -webkit-transition: -webkit-transform @transition;
+     -moz-transition: -moz-transform @transition;
+       -o-transition: -o-transform @transition;
+          transition: transform @transition;
+}
+.btn{
+  background: @blue;
+  border: @blue-dark solid 1px;
+  border-radius: 3px;
+  color: #fff;
+  display: inline-block;
+  font-size: 10px;
+  padding: 8px 15px;
+  text-decoration: none;
+  text-align: center;
+  min-width: 60px;
+  position: relative;
+  transition: color .1s ease;
+ /* top: 40em;*/
+  
+  &:hover{
+    background: @blue-dark;
+  }
+  
+  &.btn-big{
+    font-size: 18px;
+    padding: 15px 20px;
+    min-width: 100px;
+  }
+  
+}
+
+.btn-close{
+  color: @gray-light;
+  font-size: 30px;
+  text-decoration: none;
+  position: absolute; right: 5px; top: 0;
+  
+  &:hover{
+     color: darken(@gray-light, 10%);
+  }
+  
+}
+
+//
+// Modal
+// ----------------------
+
+.modal{
+  
+   
+  // This is modal bg
+  &:before{
+    content: ""; 
+    display: none;
+    background: rgba(0,0,0,.6);
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0; 
+    z-index: 10;
+  }
+  
+  &:target{
+     
+    // Active animate in modal
+    &:before{
+      display: block;
+    }  
+    .modal-dialog{
+      .translate(0, 0); 
+      top: 20%;  
+    }
+     
+  }
+  
+}
+
+// Modal Dialog
+// ----------------------
+
+.modal-dialog{
+  background: #fefefe;
+  border: @gray solid 1px;
+  border-radius: 5px;
+  margin-left: -200px;
+  position: fixed; 
+  left: 50%; 
+  top: -100%;  
+  z-index: 11; 
+  width: 360px;
+  .translate(0, -500%);
+  .transition-transform(~"0.3s ease-out");
+}
+
+.modal-body{
+  padding: @space/2;
+}
+
+.modal-header,
+.modal-footer{
+  padding: @space/4 @space/2;
+}
+
+.modal-header{
+  border-bottom: @gray-lighter solid 1px;
+  
+  h2{
+    font-size: 20px;
+  }
+  
+}
+
+.modal-footer{
+  border-top: @gray-lighter solid 1px;
+  text-align: right;
+}
+
+/*ADDED TO STOP SCROLLING TO TOP*/
+#close {
+  display: none; 
+}
+

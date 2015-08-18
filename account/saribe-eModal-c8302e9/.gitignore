@@ -1,0 +1,6 @@
+/altura.ico
+/bin/
+/lib/
+/obj/
+*.csproj
+*.user
